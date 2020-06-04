@@ -5,8 +5,9 @@ import java.io.Serializable;
 
 @Entity
 @NamedQueries({
-@NamedQuery(name = "Product.findAll",query = "SELECT p FROM Product p"),
-@NamedQuery(name = "Product.deleteAll",query = "DELETE FROM Product p")
+        @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
+        @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name"),
+        @NamedQuery(name = "Product.deleteAll", query = "DELETE FROM Product p")
 })
 public class Product implements Serializable {
     private static final long serialVersionUID = -8903956080357392266L;

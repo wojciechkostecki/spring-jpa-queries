@@ -20,6 +20,21 @@ public class ProductDao {
         this.entityManager = entityManager;
     }
 
+    public List<Product> getByName(String name) {
+        TypedQuery<Product> query =
+                entityManager.createNamedQuery("Product.findByName", Product.class);
+        query.setParameter("name", name);
+        List<Product> resultList = query.getResultList();
+        return resultList;
+    }
+
+    public void deleteByProducer(String name) {
+        Query query =
+                entityManager.createQuery("DELETE FROM Product p WHERE p.producer = :producer");
+        query.setParameter("producer", name);
+        query.executeUpdate();
+    }
+
     public Product get(Long id) {
         return entityManager.find(Product.class, id);
     }
